@@ -34,10 +34,10 @@ public class CardDeliveryTest {
         $("[data-test-id='city'] input").setValue("Краснодар");
         $("[data-test-id='date'] input").setValue(date);
         $("[data-test-id='name'] input").setValue("Иванов Иван");
-        $("[data-test-id='phone'] input").setValue("+79123456780");
+        $("[data-test-id='phone'] input").setValue("+7912345678");
         $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id='notification']").withText(text("Встреча успешно забронирована на " + date), Duration.ofSeconds(15));
+        $("[data-test-id='notification']").shouldBe(text("Встреча забронирована на" + date), Duration.ofSeconds(15));
 
     }
 
@@ -47,7 +47,7 @@ public class CardDeliveryTest {
 
         $("[data-test-id='date'] input").setValue("date");
         $("[data-test-id='name'] input").setValue("Иванова Анна");
-        $("[data-test-id='phone'] input").setValue("+7912345678");
+        $("[data-test-id='phone'] input").setValue("+79123456789");
         $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Забронировать")).click();
         $(".input_invalid .input__sub").shouldHave(text("Поле обязательно для заполнения"));
@@ -58,7 +58,7 @@ public class CardDeliveryTest {
         $("[data-test-id='city'] input").setValue("Чебоксары");
         $("[data-test-id='date'] input").setValue("36.02.1995");
         $("[data-test-id='name'] input").setValue("Иванова Анна");
-        $("[data-test-id='phone'] input").setValue("+7912345678");
+        $("[data-test-id='phone'] input").setValue("+79123456789");
         $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Забронировать")).click();
         $(".input_invalid .input__sub").shouldHave(text("Неверно введена дата"));
@@ -82,7 +82,7 @@ public class CardDeliveryTest {
 
         $("[data-test-id='city'] input").setValue("Пермь");
         $("[data-test-id='name'] input").setValue("Иванова Анна");
-        $("[data-test-id='phone'] input").setValue("+7912345678");
+        $("[data-test-id='phone'] input").setValue("+79123456789");
         $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Забронировать")).click();
         $(".input_invalid .input__sub").shouldHave(text("Неверно введена дата"));
@@ -96,8 +96,8 @@ public class CardDeliveryTest {
         $("[data-test-id='city'] input").setValue("Уфа");
         $("[data-test-id='date'] input").setValue(date);
         $("[data-test-id='name'] input").setValue("Иванов Иван");
-        $("[data-test-id='phone'] input").setValue("+7912345678");
+        $("[data-test-id='phone'] input").setValue("+79123456789");
         $$("button").find(exactText("Забронировать")).click();
-        $(".input_invalid .checkbox__text").withText(text("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
+        $(".input_invalid .checkbox__text").shouldBe(text("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
     }
 }
